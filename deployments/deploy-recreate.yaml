@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: adam-httpd
+  name: adam-httpd
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: adam-httpd
+  template:
+    metadata:
+      labels:
+        app: adam-httpd
+    spec:
+      containers:
+        - image: httpd:alpine3.18
+          name: httpd
+  strategy:
+    type: Recreate 
